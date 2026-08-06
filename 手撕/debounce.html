@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input" />
+  </body>
+  <script>
+    const inp = document.querySelector("#input");
+    function addFunc() {
+      console.log(1);
+    }
+    let newFunc = myDebounce(addFunc, 1000);
+    inp.addEventListener("input", newFunc);
+
+    /**
+     * 事件触发延迟执行，不断触发，以最后一次为准且只执行最后一次
+     */
+
+    function myDebounce(fn, delay, immediate = true) {
+      if (typeof fn !== "function") {
+        throw new TypeError("Expected a function");
+      }
+      let timer = null;
+      let result = undefined;
+      const debounced = function (...args) {
+        const context = this;
+        if (timer) {
+          clearTimeout(timer);
+        }
+        if (immediate && !timer) {
+          result = fn.apply(context, args);
+        }
+
+        timer = setTimeout(() => {
+          if (!immediate) {
+            fn.apply(context, args);
+          }
+          timer = null;
+        }, delay);
+        return result;
+      };
+      // 增加取消功能
+      debounced.cancel = function () {
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      };
+      return debounced;
+    }
+  </script>
+</html>
+
+<!-- 用户触发1: timer = null → 创建1号定时器（2秒后执行）→ timer = 1
+
+用户触发2（1秒后）:
+├─ if (timer) 判断：timer = 1 ✅ 成立！
+├─ clearTimeout(1) → 取消1号定时器（它还没跑完！）
+├─ 创建2号定时器（重新计时2秒）→ timer = 2
+
+用户触发3（又过1秒后）:
+├─ if (timer) 判断：timer = 2 ✅ 成立！
+├─ clearTimeout(2) → 取消2号定时器（它还没跑完！）
+├─ 创建3号定时器（重新计时2秒）→ timer = 3
+
+... 用户不再触发，2秒后 3号定时器跑完
+├─ 执行 fn
+├─ timer = null ✅ 重置标记 -->
+
+<!-- 1号、2号定时器都是被 clearTimeout 取消的，不是自己跑完的！ -->
+<!-- 所以它们的 timer = null 根本没有机会执行！ -->
+<!-- 只有最后一个定时器（3号）是正常跑完的，才会执行 timer = null -->
