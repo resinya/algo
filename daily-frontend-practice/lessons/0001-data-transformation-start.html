@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第一课：数据变形与解析</title>
+    <link rel="stylesheet" href="../assets/course.css" />
+  </head>
+  <body>
+    <main>
+      <p>前端每日四题 · 0001</p>
+      <h1>先识别“关系藏在哪里”</h1>
+      <p class="lede">
+        今天的四题表面上都在处理字符串或数组，真正的训练点是：先找到关系的载体，再选择索引、逐段扫描或增量建树。不要急着写循环，先说出数据之间如何关联。
+      </p>
+
+      <section class="grid" aria-label="今日四题">
+        <article class="card"><span>01</span><h3>列表转树</h3><p>关系藏在 id 与 parentId 中。</p></article>
+        <article class="card"><span>02</span><h3>URL 参数</h3><p>结构藏在 ?、&、= 和编码规则中。</p></article>
+        <article class="card"><span>03</span><h3>路由树</h3><p>层级藏在路径的公共前缀中。</p></article>
+        <article class="card"><span>04</span><h3>版本比较</h3><p>顺序藏在逐段数值语义中。</p></article>
+      </section>
+
+      <section>
+        <h2>今天只练一个动作</h2>
+        <div class="flow">
+          <p><strong>口述关系 → 列边界 → 选数据结构 → 写最小实现 → 跑测试 → 解释复杂度</strong></p>
+        </div>
+        <p>
+          开始前先打开<a href="../days/2026-08-18/questions.md">今日题目文档</a>。URL 题完成后，可对照
+          <a href="https://url.spec.whatwg.org/">WHATWG URL Standard</a>理解原生规则为什么比手写版本更完整。
+        </p>
+      </section>
+
+      <footer>
+        卡住时告诉老师题号和当前思路，先索取一级提示。任何不清楚的术语或测试都可以继续追问。
+      </footer>
+    </main>
+  </body>
+</html>
