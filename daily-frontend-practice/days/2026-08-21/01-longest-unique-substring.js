@@ -5,7 +5,24 @@ const assert = require("node:assert/strict");
 /** @param {string} s @returns {number} */
 function lengthOfLongestSubstring(s) {
   // TODO: 在这里写你的实现
-  throw new Error("TODO: implement lengthOfLongestSubstring");
+  // throw new Error("TODO: implement lengthOfLongestSubstring");
+  if (s === "") return 0;
+  let slow = 0,
+    fast = 0;
+  let maxLen = -Infinity;
+  const map = new Map();
+  while (slow <= fast && fast < s.length) {
+    if (map.has(s[fast])) {
+      map.delete(s[slow]);
+      slow++;
+    } else {
+      map.set(s[fast], fast);
+      fast++;
+    }
+
+    maxLen = Math.max(maxLen, fast - slow);
+  }
+  return maxLen;
 }
 
 function runTests() {
