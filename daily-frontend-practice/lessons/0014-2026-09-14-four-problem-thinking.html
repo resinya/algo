@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-09-14 四题破题课件</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main>
+    <p class="lesson-meta">前端每日四题 · 2026-09-14</p>
+    <h1>先看状态，再写代码</h1>
+    <p class="lede">这一页覆盖当天四题。目标不是记答案，而是能在动手前说清楚：状态、更新时机、边界和验证方法。</p>
+    <section class="recall">
+      <strong>统一破题顺序：</strong>题目约束 → 输入输出 → 状态/数据结构 → 单样例变化 → 边界 → 代码与断言。
+    </section>
+    <article class="problem"><p class="lesson-meta">第 1 题 · 算法 / 数据结构</p><h2>二分边界</h2><p class="goal">二分边界：分别实现第一个大于等于 target 与最后一个小于等于 target 的位置。</p><h3>破题点</h3><p>先不要写代码：把题目拆成“状态保存什么、何时更新、何时停止或返回”。</p><h3>可视化解题路径</h3><div class="steps"><div class="step"><strong>1. 写清搜索区间含义</strong><span>只处理当前一步</span></div><div class="step"><strong>2. 计算中点并判断单调侧</strong><span>只处理当前一步</span></div><div class="step"><strong>3. 丢弃不可能区间</strong><span>只处理当前一步</span></div><div class="step"><strong>4. 处理 left/right 相遇边界</strong><span>只处理当前一步</span></div></div><h3>写前检查</h3><ul class="checklist"><li>能否说出核心数据结构为何适合？</li><li>循环/递归的不变式是什么？</li><li>空输入、无解或重复值如何处理？</li><li>时间与空间复杂度是什么？</li></ul></article>
+    <article class="problem"><p class="lesson-meta">第 2 题 · JavaScript 手写</p><h2>Promise 并发池</h2><p class="goal">Promise 并发池：最多同时执行 `limit` 个任务，按输入顺序返回结果，失败后停止领取新任务。</p><h3>破题点</h3><p>先不要写代码：把题目拆成“状态保存什么、何时更新、何时停止或返回”。</p><h3>可视化解题路径</h3><div class="steps"><div class="step"><strong>1. 明确 resolve/reject 契约</strong><span>只处理当前一步</span></div><div class="step"><strong>2. 定义共享状态与初始值</strong><span>只处理当前一步</span></div><div class="step"><strong>3. 在 settled 后更新状态</strong><span>只处理当前一步</span></div><div class="step"><strong>4. 验证顺序、失败和取消</strong><span>只处理当前一步</span></div></div><h3>写前检查</h3><ul class="checklist"><li>输入、this、异常或 Promise 的契约是什么？</li><li>状态在哪一刻更新才正确？</li><li>是否修改了输入或残留副作用？</li><li>至少一个边界断言是什么？</li></ul></article>
+    <article class="problem"><p class="lesson-meta">第 3 题 · 浏览器 / 网络 / 异步</p><h2>网络面试口述</h2><p class="goal">网络面试口述：用 2 分钟解释一次从输入 URL 到页面显示的关键链路。</p><h3>破题点</h3><p>先不要写代码：把题目拆成“状态保存什么、何时更新、何时停止或返回”。</p><h3>可视化解题路径</h3><div class="steps"><div class="step"><strong>1. 定位浏览器或网络阶段</strong><span>只处理当前一步</span></div><div class="step"><strong>2. 解释关键 API/机制</strong><span>只处理当前一步</span></div><div class="step"><strong>3. 列出失败或性能风险</strong><span>只处理当前一步</span></div><div class="step"><strong>4. 给出代码层验证或降级方案</strong><span>只处理当前一步</span></div></div><h3>写前检查</h3><ul class="checklist"><li>机制发生在哪个阶段？</li><li>常见失败或兼容问题是什么？</li><li>如何用代码或 DevTools 验证？</li></ul></article>
+    <article class="problem"><p class="lesson-meta">第 4 题 · 工程小功能</p><h2>45 分钟模拟</h2><p class="goal">45 分钟模拟：不看旧代码重写反转链表或 Promise.all，并记录一个曾踩过的边界。</p><h3>破题点</h3><p>先不要写代码：把题目拆成“状态保存什么、何时更新、何时停止或返回”。</p><h3>可视化解题路径</h3><div class="steps"><div class="step"><strong>1. 列出用户动作与输入</strong><span>只处理当前一步</span></div><div class="step"><strong>2. 设计最小状态模型</strong><span>只处理当前一步</span></div><div class="step"><strong>3. 拆分纯更新与副作用</strong><span>只处理当前一步</span></div><div class="step"><strong>4. 覆盖成功、失败、空态与重复操作</strong><span>只处理当前一步</span></div></div><h3>写前检查</h3><ul class="checklist"><li>用户动作有哪些？</li><li>状态字段与允许迁移是什么？</li><li>失败、重复和卸载时如何处理？</li><li>如何写最小可验证测试？</li></ul></article>
+    <footer><a href="0013-2026-09-13-four-problem-thinking.html">上一课</a> · <a href="0015-2026-09-15-four-problem-thinking.html">下一课或课程计划</a> · 写完后把当前代码贴给老师检查。</footer>
+  </main>
+</body>
+</html>
