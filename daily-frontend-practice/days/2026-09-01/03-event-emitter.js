@@ -2,6 +2,13 @@
 // 手写实现一个 EventEmitter（发布-订阅模式 / 事件总线)
 const assert = require("node:assert/strict");
 
+/**
+ * 中文解释（已给出）：EventEmitter 保存“事件名到监听函数集合”的关系，emit 时同步通知该事件的监听者。
+ * 输入：on/off/once 接收 eventName 与 listener；emit 接收 eventName 和要透传给监听器的任意参数。
+ * 输出：on/off/once 返回实例以便链式调用；emit 有监听器返回 true，否则返回 false。
+ * 具体例子：emitter.on("change", value => log.push(value)); emitter.emit("change", 3) 后 log 为 [3]。
+ * 关键边界：once 只能执行一次；emit 过程中新增或删除监听器不能改变本轮已确定的调用队列。
+ */
 class EventEmitter {
   constructor() {
     // TODO: 初始化事件存储

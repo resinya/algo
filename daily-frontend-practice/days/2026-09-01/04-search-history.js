@@ -13,7 +13,9 @@ const assert = require("node:assert/strict");
  */
 function createSearchHistory(options = {}) {
   // TODO: 在这里写你的实现
-  throw new Error("TODO: implement createSearchHistory");
+  // throw new Error("TODO: implement createSearchHistory");
+  const { limit = 5 } = options;
+  
 }
 
 function runTests() {

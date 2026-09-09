@@ -5,6 +5,11 @@ const { run } = require("node:test");
 
 /**
  * 以不超过 limit 的并发数执行任务，并按输入顺序返回结果。
+ * 中文解释（已给出）：任务函数可以同时启动，但任意时刻运行数不能超过 limit；完成顺序可以不同，结果顺序必须和输入一致。
+ * 输入：tasks 是返回 Promise 的函数数组，limit 是正整数并发上限。
+ * 输出：Promise；全部成功时 resolve 为按任务原下标排列的结果数组，任一失败时 reject。
+ * 具体例子：A 用 30ms、B 用 10ms、C 用 20ms，limit=2；虽然 B 先结束，最终仍得到 ["A", "B", "C"]。
+ * 关键边界：tasks=[] 返回 Promise.resolve([])；非法 limit 同步抛 RangeError；失败后不再领取新任务。
  * @param {Array<() => Promise<unknown>>} tasks
  * @param {number} limit
  * @returns {Promise<unknown[]>}

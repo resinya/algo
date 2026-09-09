@@ -4,6 +4,14 @@
 
 HTTP 缓存：比较强缓存与协商缓存，说明 `Cache-Control`、ETag、304。
 
+## 中文解释（已给出）
+
+- 意思：这道题要你分析或完成：HTTP 缓存：比较强缓存与协商缓存，说明 `Cache-Control`、ETag、304。
+- 输入/场景：请求与响应头中的 Cache-Control、ETag/Last-Modified 及浏览器缓存状态。
+- 输出/作答：判断使用强缓存、协商缓存还是重新下载，并说明 304 的含义。
+- 具体例子：Cache-Control:max-age=3600 未过期 -> 不发请求直接用缓存；过期后带 If-None-Match，服务端可回 304。
+- 关键边界：no-store 与 no-cache 含义不同；304 没有新响应体，要复用本地副本。
+
 ## 作答模板
 
 - 核心概念：

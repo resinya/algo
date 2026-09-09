@@ -4,6 +4,14 @@
 
 URL 与 URLSearchParams：分别用原生 API 解析查询参数、重复键和 hash；比较其与手写解析器的取舍。
 
+## 中文解释（已给出）
+
+- 意思：这道题要你分析或完成：URL 与 URLSearchParams：分别用原生 API 解析查询参数、重复键和 hash；比较其与手写解析器的取舍。
+- 输入/场景：一个完整 URL，例如 https://site.test/search?tag=js&tag=ts#top。
+- 输出/作答：pathname、查询参数、重复键数组和 hash，并说明原生 API 与手写方案的取舍。
+- 具体例子：new URL(url).searchParams.getAll("tag") -> ["js","ts"]，url.hash -> "#top"。
+- 关键边界：空值、+、百分号编码和重复键必须明确处理。
+
 ## 作答模板
 
 - 核心概念：

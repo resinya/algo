@@ -6,8 +6,14 @@ const assert = require("node:assert/strict");
  * 类型：JavaScript 手写
  * 题目要求：手写 `Promise.race`：第一个 settled 的结果决定返回 Promise；解释空数组行为。
  *
- * 编码前请用中文补充：
- * 1. 输入与输出是什么？
+ * 中文解释（已给出）：这道题要你完成：手写 `Promise.race`：第一个 settled 的结果决定返回 Promise；解释空数组行为。
+ * 输入：可迭代的值或 Promise 列表。
+ * 输出：一个由第一个 settled 项决定的 Promise。
+ * 具体例子：race([delayResolve("slow",30),delayReject("bad",10)]) -> 约 10ms 后 reject "bad"。
+ * 关键边界：空数组返回永远 pending 的 Promise；普通值可能立即赢得竞速。
+ *
+ * 编码前请先复述并画出关键状态：
+ * 1. 用自己的话复述上面的输入与输出。
  * 2. 维护哪些状态/数据结构？
  * 3. 至少一个边界是什么？
  */

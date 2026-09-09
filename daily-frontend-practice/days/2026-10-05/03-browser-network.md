@@ -4,6 +4,14 @@
 
 长任务：解释 Long Task、主线程阻塞与 PerformanceObserver。
 
+## 中文解释（已给出）
+
+- 意思：这道题要你分析或完成：长任务：解释 Long Task、主线程阻塞与 PerformanceObserver。
+- 输入/场景：一个执行超过 50ms 的主线程任务与 PerformanceObserver 记录。
+- 输出/作答：解释输入延迟原因、Long Task 条目和拆分方案。
+- 具体例子：同步处理 10 万项耗时 120ms -> 期间点击无法响应；拆成小批次可让出主线程。
+- 关键边界：Long Task 只反映主线程占用，仍需定位具体函数和验证改动。
+
 ## 自测清单
 
 - 用自己的话解释核心概念或 API。

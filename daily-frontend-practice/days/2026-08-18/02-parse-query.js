@@ -5,6 +5,11 @@ const assert = require("node:assert/strict");
 /**
  * 手写解析完整 URL 或查询字符串。
  * 禁止使用 URL、URLSearchParams 和第三方库。
+ * 中文解释（已给出）：取出 ? 后、# 前的查询部分，把 key=value 转成对象，并处理解码、空值和重复键。
+ * 输入：完整 URL 或查询字符串，例如 "?tag=js&tag=ts&keyword=hello+world"。
+ * 输出：普通对象；重复键对应字符串数组，+ 还原为空格，百分号编码需要解码。
+ * 具体例子："?tag=js&tag=ts&empty=" -> { tag: ["js", "ts"], empty: "" }。
+ * 关键边界：没有查询参数返回 {}；没有 = 的键按空字符串处理。
  * @param {string} input
  * @returns {Record<string, string | string[]>}
  */

@@ -4,6 +4,11 @@ const assert = require("node:assert/strict");
 
 /**
  * 深拷贝普通对象、数组、Date 与 RegExp，并支持循环引用。
+ * 中文解释（已给出）：创建结构和值相同但引用独立的副本；同一个源对象被多处引用时，副本中仍应指向同一个克隆对象。
+ * 输入：任意值 value；本题重点支持普通对象、数组、Date、RegExp 和循环引用。
+ * 输出：原始值直接返回；支持的引用值返回新引用组成的深层副本。
+ * 具体例子：source.user 与 source.sameUser 指向同一对象，克隆后 copy.user !== source.user 且 copy.user === copy.sameUser。
+ * 关键边界：source.self = source 时，copy.self 必须等于 copy，不能无限递归。
  * @param {unknown} value
  * @returns {unknown}
  */

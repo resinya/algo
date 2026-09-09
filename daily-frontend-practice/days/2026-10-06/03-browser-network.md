@@ -4,6 +4,14 @@
 
 缓存键设计：解释 URL、method、body、用户身份如何影响缓存正确性。
 
+## 中文解释（已给出）
+
+- 意思：这道题要你分析或完成：缓存键设计：解释 URL、method、body、用户身份如何影响缓存正确性。
+- 输入/场景：请求的 URL、method、body、headers 与用户身份。
+- 输出/作答：稳定且不会错误串用数据的缓存 key 设计。
+- 具体例子：GET /profile 对 userA 和 userB 必须生成不同 key；POST 搜索 body 不同也不能共用缓存。
+- 关键边界：对象 body 要稳定序列化；Authorization/token 不宜直接明文写入日志。
+
 ## 自测清单
 
 - 用自己的话解释核心概念或 API。

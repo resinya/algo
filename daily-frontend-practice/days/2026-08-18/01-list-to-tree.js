@@ -4,6 +4,11 @@ const assert = require("node:assert/strict");
 
 /**
  * 将 id/parentId 扁平列表转换为树。
+ * 中文解释（已给出）：每个节点用 parentId 指向父节点，本题要把平铺列表连接成带 children 的层级树。
+ * 输入：list 是节点数组，每项至少有 id 和 parentId；rootParentId 表示根节点的 parentId，默认是 null。
+ * 输出：根节点数组；每个输出节点都新增 children，且不能修改原输入对象。
+ * 具体例子：[{id: 1, parentId: null}, {id: 2, parentId: 1}] -> [{id: 1, parentId: null, children: [{id: 2, parentId: 1, children: []}]}]。
+ * 关键边界：空列表返回 []；子节点可能排在父节点前面。
  * @param {Array<Record<string, unknown>>} list
  * @param {unknown} rootParentId
  * @returns {Array<Record<string, unknown>>}

@@ -2,7 +2,15 @@
 
 const assert = require("node:assert/strict");
 
-/** @param {string} s @returns {number} */
+/**
+ * 中文解释（已给出）：在字符串中寻找不含重复字符的最长连续片段，只返回它的长度。
+ * 输入：字符串 s，例如 "abcabcbb"。
+ * 输出：最长无重复连续子串的字符数；空字符串返回 0。
+ * 具体例子："pwwkew" -> 3，对应 "wke"；"pwke" 不是连续子串，不能作为答案。
+ * 关键边界：重复字符可能出现在窗口中间；右边界不能访问 s.length。
+ * @param {string} s
+ * @returns {number}
+ */
 function lengthOfLongestSubstring(s) {
   // TODO: 在这里写你的实现
   // throw new Error("TODO: implement lengthOfLongestSubstring");

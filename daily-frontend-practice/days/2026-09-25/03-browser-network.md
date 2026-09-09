@@ -4,6 +4,14 @@
 
 requestAnimationFrame：说明与 setTimeout 的区别和适用动画场景。
 
+## 中文解释（已给出）
+
+- 意思：这道题要你分析或完成：requestAnimationFrame：说明与 setTimeout 的区别和适用动画场景。
+- 输入/场景：一个每帧更新位置的动画需求和目标持续时间。
+- 输出/作答：选择 requestAnimationFrame 的原因、基于时间戳的进度计算和取消方式。
+- 具体例子：动画 300ms：每帧 progress=min((now-start)/300,1)，再据此计算位置；完成时停止请求下一帧。
+- 关键边界：后台标签页 rAF 会降频/暂停；不能用帧数假设固定 60Hz。
+
 ## 自测清单
 
 - 用自己的话解释核心概念或 API。

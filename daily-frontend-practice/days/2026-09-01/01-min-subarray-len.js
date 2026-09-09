@@ -8,6 +8,11 @@ const assert = require("node:assert/strict");
 // 返回满足条件的所有子数组中 最短的长度。
 // 如果不存在这样的子数组（即整个数组的和都小于 target），则返回 0。
 /**
+ * 中文解释（已给出）：在只含正整数的数组中，寻找元素和至少为 target 的最短连续片段。
+ * 输入：正整数 target 与正整数数组 nums。
+ * 输出：满足条件的最短长度；没有满足条件的连续子数组时返回 0。
+ * 具体例子：target=7、nums=[2,3,1,2,4,3] -> 2，因为最短答案是 [4,3]。
+ * 关键边界：nums=[] 返回 0；单个元素就达到 target 时返回 1；不修改 nums。
  * @param {number} target
  * @param {number[]} nums
  * @returns {number}

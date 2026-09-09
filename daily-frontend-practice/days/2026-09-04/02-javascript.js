@@ -6,8 +6,14 @@ const assert = require("node:assert/strict");
  * 类型：JavaScript 手写
  * 题目要求：手写 `call`：实现 `myCall`，支持普通参数与临时属性清理；说明箭头函数为何不适用。
  *
- * 编码前请用中文补充：
- * 1. 输入与输出是什么？
+ * 中文解释（已给出）：这道题要你完成：手写 `call`：实现 `myCall`，支持普通参数与临时属性清理；说明箭头函数为何不适用。
+ * 输入：目标函数 fn、thisArg 与参数列表。
+ * 输出：使用 thisArg 调用 fn 后的返回值。
+ * 具体例子：myCall(function(x){return this.base+x}, {base:2}, 3) -> 5。
+ * 关键边界：临时属性必须清理；thisArg 为 null/undefined 的规则要明确；箭头函数的 this 不能被改写。
+ *
+ * 编码前请先复述并画出关键状态：
+ * 1. 用自己的话复述上面的输入与输出。
  * 2. 维护哪些状态/数据结构？
  * 3. 至少一个边界是什么？
  */

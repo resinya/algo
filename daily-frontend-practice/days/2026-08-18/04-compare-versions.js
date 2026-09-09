@@ -4,6 +4,11 @@ const assert = require("node:assert/strict");
 
 /**
  * 比较仅包含数字和点号的版本号。
+ * 中文解释（已给出）：按点号逐段比较数值，不能把整个版本号当小数，也不能因超大数字超过 Number 精度而判断错误。
+ * 输入：两个版本字符串 version1、version2，例如 "1.0.10" 与 "1.0.2"。
+ * 输出：version1 更大返回 1，更小返回 -1，数值等价返回 0。
+ * 具体例子：compareVersions("1.01", "1.001") -> 0，因为 01 与 001 的数值都等于 1。
+ * 关键边界：缺失段按 0；前导零忽略；单段可能超过安全整数。
  * @param {string} version1
  * @param {string} version2
  * @returns {-1 | 0 | 1}
