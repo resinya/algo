@@ -19,3 +19,11 @@
 - 一个常见边界/风险：
 - 真实项目中的处理策略：
 
+冒泡机制，子元素触发后逐层冒泡到父级容器，所以再父级容器统一监听
+
+```js
+const container=document.querySelector()
+container.addEventListener("click", (event) => {
+    const btn event.target.closet("")
+})
+```

@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const { time } = require("node:console");
 
 /**
  * 类型：工程小功能
@@ -18,9 +19,18 @@ const assert = require("node:assert/strict");
  * 3. 至少一个边界是什么？
  */
 function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+  // throw new Error("TODO: 请按题目要求实现");
+  const { fn, delay } = input;
+  let timer = null;
+  return function (...args) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
 }
 
+//!最后一次操作完才执行
 function runTests() {
   // 按 2026-08-21 的断言风格：补充样例、边界、输入不变性等 assert。
   assert.equal(typeof solve, "function");

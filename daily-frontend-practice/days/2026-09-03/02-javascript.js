@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const { nextTick } = require("node:process");
 
 /**
  * 类型：JavaScript 手写
@@ -17,10 +18,20 @@ const assert = require("node:assert/strict");
  * 2. 维护哪些状态/数据结构？
  * 3. 至少一个边界是什么？
  */
-function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+function solve(fn) {
+  // throw new Error("TODO: 请按题目要求实现");
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
+    }
+    return function (...nextArgs) {
+      return curried.apply(this, [...args, ...nextArgs]);
+    };
+  };
 }
 
+// slow() -- > return fn1()
+//fn1(args) --> return
 function runTests() {
   // 按 2026-08-21 的断言风格：补充样例、边界、输入不变性等 assert。
   assert.equal(typeof solve, "function");

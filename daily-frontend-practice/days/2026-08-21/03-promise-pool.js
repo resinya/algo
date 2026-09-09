@@ -1,6 +1,7 @@
 "use strict"; // Day 2 / Exercise 03
 
 const assert = require("node:assert/strict");
+const { log } = require("node:console");
 const { run } = require("node:test");
 
 /**
@@ -17,35 +18,53 @@ const { run } = require("node:test");
 function promisePool(tasks, limit) {
   // TODO: 在这里写你的实现
   // throw new Error("TODO: implement promisePool");
-  let result = [];
+  // let result = [];
+  // return new Promise((resolve, reject) => {
+  //   let index = 0; //当前任务索引
+  //   let running = 0; //正在执行
+  //   let completed = 0; //完成的
+
+  //   function runNext() {
+  //     if (completed === total) {
+  //       resolve(results);
+  //       return;
+  //     }
+
+  //     while (true) {
+  //       const task = tasks[index];
+  //       running++;
+  //       Promise.resolve(task())
+  //         .then((res) => {
+  //           result[index++] = res;
+  //         })
+  //         .catch((err) => {
+  //           reject(err);
+  //         })
+  //         .finally(() => {
+  //           running--;
+  //           completed++;
+  //         });
+  //     }
+  //   }
+  //   runNext();
+  // });
   return new Promise((resolve, reject) => {
-    let index = 0; //当前任务索引
-    let running = 0; //正在执行
-    let completed = 0; //完成的
-
-    function runNext() {
-      if (completed === total) {
-        resolve(results);
-        return;
-      }
-
-      while (true) {
-        const task = tasks[index];
-        running++;
-        Promise.resolve(task())
+    let index, completed, running;
+    function task() {
+      while (completed < tasks.length) {
+        Promise.resolve(tasks[index]())
           .then((res) => {
             result[index++] = res;
           })
           .catch((err) => {
-            reject(err);
+            console.log(err);
           })
           .finally(() => {
-            running--;
             completed++;
+            running--;
           });
       }
     }
-    runNext();
   });
 }
 

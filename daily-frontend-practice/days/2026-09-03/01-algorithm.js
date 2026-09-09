@@ -18,7 +18,28 @@ const assert = require("node:assert/strict");
  * 3. 至少一个边界是什么？
  */
 function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+  // throw new Error("TODO: 请按题目要求实现");
+  //*先sort排序
+
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] > 0) break;
+    let l = i + 1;
+    let r = input.length - 1;
+    if (input[i] === input[i - 1]) continue;
+    while (l < r) {
+      let sum = 0;
+      if (sum === 0) {
+        res.push();
+        while (l < r && input[l] === input[l + 1]) continue;
+        while (l < r && input[r] === input[r - 1]) continue;
+      } else if (sum < 0) {
+        l++;
+      } else {
+        r--;
+      }
+    }
+  }
+  return res;
 }
 
 function runTests() {
