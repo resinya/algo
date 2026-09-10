@@ -18,9 +18,20 @@ const assert = require("node:assert/strict");
  * 3. 至少一个边界是什么？
  */
 function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+  function Table({ row }) {
+    const [sort, setSort] = useSatte({
+      order: "asc",
+    });
+    function handleSort() {
+      setSort((prev) => ({
+        order: prev.order === "asc" ? "desc" : "asc",
+      }));
+    }
+  }
 }
-
+{
+  /* <Table rows={rows} sort={sort} onSortChange={setSort}></Table>  */
+}
 function runTests() {
   // 按 2026-08-21 的断言风格：补充样例、边界、输入不变性等 assert。
   assert.equal(typeof solve, "function");
