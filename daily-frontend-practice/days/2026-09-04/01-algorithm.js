@@ -17,8 +17,31 @@ const assert = require("node:assert/strict");
  * 2. 维护哪些状态/数据结构？
  * 3. 至少一个边界是什么？
  */
+
+//aa
 function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+  // throw new Error("TODO: 请按题目要求实现");
+  //!子串的题目，一般双指针
+  if (!input || input.length <= 1) return input;
+  let maxLen = 1;
+  let start = 0;
+  function expand(left, right) {
+    while (left >= 0 && right < input.length && input[left] === input[right]) {
+      left--;
+      right++;
+    }
+    // 退出循环时，有效回文区间为 [left + 1, right - 1]
+    let curLen = right - left - 1;
+    if (curLen > maxLen) {
+      maxLen = curLen;
+      start = left + 1;
+    }
+  }
+  for (let i = 0; i < input.length; i++) {
+    expand(i, i);
+    expand(i, i + 1);
+  }
+  return input.subString(start, start + maxLen);
 }
 
 function runTests() {
