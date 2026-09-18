@@ -18,8 +18,25 @@ const assert = require("node:assert/strict");
  * 2. 维护哪些状态/数据结构？
  * 3. 至少一个边界是什么？
  */
+
 function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+  // throw new Error("TODO: 请按题目要求实现");
+  const { value, rules } = input;
+  const errors = {};
+  rules = {
+    email: {},
+    phone: {},
+    age: {},
+  };
+  value = {
+    email: "111@qq,com",
+  };
+  //处理必填，字段长度，格式，正则
+  //有问题添加到error里
+  errors = {
+    email: "格式有问题",
+    phone: "长度有问题",
+  };
 }
 
 function runTests() {
