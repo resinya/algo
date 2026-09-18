@@ -9,6 +9,7 @@ const assert = require("node:assert/strict");
  * 中文解释（已给出）：这道题要你完成：有效的括号变式：除判断有效外，返回第一个错误位置；无错误返回 `-1`。
  * 输入：只含括号字符的字符串 s。
  * 输出：第一个不合法字符的下标；完全合法返回 -1。
+ console.log("🚀 ~ 全:", 全)
  * 具体例子："([)]" -> 2，因为下标 2 的 ) 不能匹配当前栈顶 [。
  * 关键边界：遍历结束仍有左括号时，要定义并返回第一个未匹配左括号的位置。
  *
@@ -18,7 +19,19 @@ const assert = require("node:assert/strict");
  * 3. 至少一个边界是什么？
  */
 function solve(input) {
-  throw new Error("TODO: 请按题目要求实现");
+  // throw new Error("TODO: 请按题目要求实现");
+  //有效的括号用栈，先进后出
+  let stack = [];
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] == "(" || "{" || "[") {
+      stack.push(input[i]);
+    }
+    //['(','[','{']
+    if (input[i] === "}" && stack.pop() === "{") {
+      continue;
+    }
+  }
+  return input.length === 0;
 }
 
 function runTests() {
