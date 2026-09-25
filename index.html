@@ -7,7 +7,21 @@
   </head>
   <body>
     <script>
-      function listToTree() {}
+      const list = [
+        { id: 1, name: "部门A", parentId: 0 },
+        { id: 2, name: "部门B", parentId: 0 },
+        { id: 3, name: "A-子1", parentId: 1 },
+        { id: 4, name: "A-子2", parentId: 1 },
+        { id: 5, name: "A子1的子", parentId: 3 },
+        { id: 6, name: "B-子1", parentId: 2 },
+      ];
+      function treeToArray(list, rootId) {
+        const res = [];
+        const queue = [...list];
+        while (queu.length) {
+          const node = queue.shift();
+        }
+      }
     </script>
   </body>
 </html>
