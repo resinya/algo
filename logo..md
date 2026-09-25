@@ -53,3 +53,12 @@ const dummy = new ListNode()
 let cur = dummy，比较list1和list2的大小，然后cur.next=list1/list2
 同步更新list，以及cur=cur.next
 最后拼接剩余的，cur = list1 ?? list2,返回dummy.next
+
+# 两数相加
+
+这部分涉及新建链表，老套路，new ListNode(0)给dummy，声明指针指向dummy
+p1，p2分别指向l1和l2，声明进位carry=0。
+循环遍历l2，l1，记录当前值，无则补0，计算sum，用floor计算进位，sum%10计算当前位
+此时需要继续新建节点，cur.next=new ListNode(digit赋值),cur=cur.next
+这个地方要注意就是当l1或者l2为null的时候，是不能继续next了，所以加个判断
+if(l1)l1=l1.next
