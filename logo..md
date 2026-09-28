@@ -62,3 +62,20 @@ p1，p2分别指向l1和l2，声明进位carry=0。
 此时需要继续新建节点，cur.next=new ListNode(digit赋值),cur=cur.next
 这个地方要注意就是当l1或者l2为null的时候，是不能继续next了，所以加个判断
 if(l1)l1=l1.next
+
+# 删除链表的倒数第 N 个结点
+
+1. 首先获取链表长度len = 0，while{len++,cur=cur.next}
+   边界处理，len===n,head.next,根据len，n，计算index
+   循环index--，cur=cur.next,index--
+   cur.next = cur.next.next\
+
+# 两两交换链表中的节点
+
+1. 哨兵模式：
+   新建一个哨兵节点const dummy = new ListNode(0,head)
+   声明一个指针prev，经过一个函数，最终返回dummy.next
+   声明两个指针，first = prev.next
+   这里为什么不写second = prev.next.next，如果这样写的话，两个节点都只和prev有关，prev一变，两个都变，所以用second = first.next
+   这样second永远关联first。
+   然后走while循环，条件是prev.next&&prev.next.next，然后就开始交换节点。first.next = second.next;second.next = first;prev.next = second;prev = first这一步去更新prev，循环结束，return dummy.next
