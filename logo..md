@@ -79,3 +79,83 @@ if(l1)l1=l1.next
    这里为什么不写second = prev.next.next，如果这样写的话，两个节点都只和prev有关，prev一变，两个都变，所以用second = first.next
    这样second永远关联first。
    然后走while循环，条件是prev.next&&prev.next.next，然后就开始交换节点。first.next = second.next;second.next = first;prev.next = second;prev = first这一步去更新prev，循环结束，return dummy.next
+
+# 反转链表
+
+反转要有一个cur，当前节点，有一个prev前节点，还要记住cur.next的下一个节点，nxt
+nxt = cur.next //记录cur的下一个节点
+cur.next = prev //cur.next指向上一个节点
+prev = cur //更新prev = cur
+cur = nxt //更新cur = nxt
+0 <- 1 -> 2 3
+prev cur nxt
+
+# 反转链表2
+
+12345 --> 14325 反转了234
+p0是1，2指向null，4是pre，5是cur指向null
+把反转的上一个节点叫p0。
+p0.next指向cur，p0指向pre
+dummy = new ListNode(p0,head)
+循环left-1次，到达反转的上一个节点，
+let pre = null;cur = p0.next
+for(0<right-left+1){
+nxt = cur.next
+cur.next = per
+prv = cur
+cur = nxt
+}
+p0.next.next = cur
+p0.next = pre
+return dummy.next
+
+# K 个一组翻转链表
+
+第一步，求出列表长度，声明哨兵节点dummy，p0 = dummy
+
+```js
+var reverseKGroup = function (head, k) {
+  let cur = head;
+  let n = 0;
+  while (cur) {
+    n++;
+    cur = cur.next;
+  }
+  let dummy = new ListNode(0, head);
+  let p0 = dummy;
+  while (n >= k) {
+    n -= k;
+    let pre = null;
+    cur = p0.next;
+    for (let i = 0; i < k; i++) {
+      let nxt = cur.next;
+      cur.next = pre;
+      pre = cur;
+      cur = nxt;
+    }
+    let neet = p0.next;
+    p0.next.next = cur;
+    p0.next = pre;
+    p0 = neet;
+  }
+  return dummy.next;
+};
+```
+
+# 随机链表的复制
+
+// 复制每个节点，把新节点直接插到原节点的后面
+for(let cur=head;cur;cur=cur.next.next){
+cur.next=new \_Node(cur.val,cur.next,null)
+}
+// 遍历交错链表中的原链表节点
+for(let cur=head;cur;cur=cur.next.next){
+if(cur.random){
+cur.next.random=cur.random.next
+}
+}
+// 把交错链表分离成两个链表
+const dummy=new \_Node()
+tail,cur
+const copy = cur.next;tail.next = copy;cur.next = copy.next
+return dummy.next
