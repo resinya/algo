@@ -159,3 +159,9 @@ const dummy=new \_Node()
 tail,cur
 const copy = cur.next;tail.next = copy;cur.next = copy.next
 return dummy.next
+
+# 排序链表
+
+遍历链表，把每一个值放入数组，数组排序，遍历数组，每次新建节点
+
+# LRU缓存
